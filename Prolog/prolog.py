@@ -1,12 +1,16 @@
+import unicodedata
+
 import xml.etree.ElementTree as ET
-tree = ET.parse('GRUPO1.xml')
+tree = ET.parse('./GRUPO1.XML')
 root = tree.getroot()
+
+
 # class Plant:
 #     def __init__(self, name):
 #         self.name = name
 
-file = open('prolog.txt', 'w')  # clear file
-with open('prolog.txt', 'a') as file:
+file = open('baseWithoutAccents.pl', 'w')  # clear file
+with open('baseWithoutAccents.pl', 'a') as file:
     file.truncate()
     for i, record in enumerate(root):
         # print('record #', i)
@@ -15,7 +19,13 @@ with open('prolog.txt', 'a') as file:
         file.write('record(')
         for child in record:
             file.write(child.tag.lower() + "('")
-            file.write(str(child.text))
+            temp = unicode(child.text)
+            # for char in temp:
+
+            temp=''.join((c for c in unicodedata.normalize('NFD', temp) if unicodedata.category(c) != 'Mn'))
+            temp=temp.encode('utf-8').strip()
+            
+            file.write(temp)
             file.write("')")
             if child.tag != 'SAUDE':
                 file.write(',')
