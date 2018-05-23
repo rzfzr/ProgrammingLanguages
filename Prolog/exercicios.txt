@@ -1,0 +1,101 @@
+Arquivo 1
+Pesquisas
+    1) Listar as ervas com origem na Europa
+        ?- record(X,_,_,_,origem(Y),_,_,_,_,_,_,_),sub_string(Y,_,_,_,'Europa').
+    2) Listar as ervas com origem diferente da Europa. (utilizar /=).
+        record(X,_,_,_,origem(Y),_,_,_,_,_,_,_),\+ sub_string(Y,_,_,_,'Europa').
+    3) Listar as ervas com floração que iniciem no mês de Abril.
+        record(X,_,_,_,_,_,floracao(Y),_,_,_,_,_),sub_string(Y,_,_,_,'De Abril').
+    4) Listar as ervas com floração que iniciem no mês de Abril e Julho.
+        record(X,_,_,_,_,_,floracao(Y),_,_,_,_,_), (sub_string(Y,_,_,_,'De Abril');
+        sub_string(Y,_,_,_,'De julho')).
+    5) Listar as ervas com floração que iniciem no mês de Abril e Julho e com floração final no mês de Setembro.
+        record(X,_,_,_,_,_,floracao(Y),_,_,_,_,_), ( (sub_string(Y,_,_,_,'De Abril');
+        sub_string(Y,_,_,_,'De julho')),sub_string(Y,_,_,_,'Setembro') ).
+    6) Listar as ervas com floração inicial diferente do mês de Julho.
+        record(X,_,_,_,_,_,floracao(Y),_,_,_,_,_), \+sub_string(Y,_,_,_,'De julho'), \+sub_string(Y,_,_,_,'De Julho').
+    7) Listar as ervas que são utilizadas para bebidas.
+        record(nome(A),nomescomum(B),sinonimo(C),familia(D),origem(E),historia(F),floracao(G),caracteristica(H),habitat(I),propriedades(J),cozinha(K),saude(L)),(sub_string(F,_,_,_,'bebi');sub_string(H,_,_,_,'bebi');sub_string(K,_,_,_,'bebi');sub_string(L,_,_,_,'bebi')).
+    8) Listar as ervas que são utilizadas como repelentes.
+        record(nome(A),nomescomum(B),sinonimo(C),familia(D),origem(E),historia(F),floracao(G),caracteristica(H),habitat(I),propriedades(J),cozinha(K),saude(L)),(sub_string(F,_,_,_,'repelente');sub_string(H,_,_,_,'repelente');sub_string(K,_,_,_,'repelente');sub_string(L,_,_,_,'repelente')).
+    9) Listar as histórias das ervas Aipo, Abrótono e Cebola.
+        record(nome(A),nomescomum(B),sinonimo(_),familia(_),origem(_),historia(F),floracao(_),caracteristica(_),habitat(_),propriedades(_),cozinha(_),saude(_)),(sub_string(B,_,_,_,'Aipo');sub_string(A,_,_,_,'ABROTAN');sub_string(B,_,_,_,'Cebola')).
+    10) Listar as ervas com altura de 1 metro.
+        record(nome(A),nomescomum(_),sinonimo(_),familia(_),origem(_),historia(_),floracao(_),caracteristica(C),habitat(_),propriedades(_),cozinha(_),saude(_)),sub_string(C,_,_,_,'1 metro').
+    11) Listar as ervas com altura menor que 1 metro.
+        record(nome(A),nomescomum(_),sinonimo(_),familia(_),origem(_),historia(_),floracao(_),caracteristica(C),habitat(_),propriedades(_),cozinha(_),saude(_)),\+sub_string(C,_,_,_,'1 metro').
+    12) Listar as ervas com altura maior que 50 cm e menor que 1 metro.
+        (nome(A),nomescomum(_),sinonimo(_),familia(_),origem(_),historia(_),floracao(_),caracteristica(C),habitat(_),propriedades(_),cozinha(_),saude(_)), (sub_string(C,_,_,_,'50 cm');sub_string(C,_,_,_,'55 cm');sub_string(C,_,_,_,'60 cm');sub_string(C,_,_,_,'65 cm');sub_string(C,_,_,_,'75 cm');sub_string(C,_,_,_,'80 cm');sub_string(C,_,_,_,'85 cm');sub_string(C,_,_,_,'90 cm');sub_string(C,_,_,_,'95 cm');sub_string(C,_,_,_,'1 metro')).
+    13) Listar os outros nomes para Alchemilla Xanthochlora.
+        record(nome(A),nomescomum(N),sinonimo(NN),familia(_),origem(_),historia(_),floracao(_),caracteristica(_),habitat(_),propriedades(_),cozinha(_),saude(_)),sub_string(A,_,_,_,'ALCHEMILLA XANTHOCHLORA').
+    14) Liste todas as ervas e seus sinônimos formatando a saída. (Exemplo: ERVA(X, Y), write(X), write(‘ sinônimo =  ‘), write(Y).
+        record(nomescomum(X),nome(Y),_,_,_,_,_,_,_,_,_,_,_), write(X), write(' sinônimo: '), write(Y).
+    15) Exibir a diferença de altura entre as ervas Alchemilla Xanthochlora e a Allium Cepa. altura(erva1,X), altura(erva2, Y), Z is X-Y.
+        record(nome('Alchemilla Xanthochlora',_,_,_,_,_,_,_,_,_,_,_,_),X), altura(erva2, Y), Z is X-Y // nao temos altura
+    16)  Fazer o comando para comparar a altura das Ervas Allium Sativum e Apium Graveolens ?- altura(erva1,X), altura(erva2, Y), X=:=Y.
+        //tbm nao temos altura
+Arquivo 2
+Pesquisas
+    1) Listar as ervas com origem na América do Norte
+    2) Listar as ervas com origem diferente da América do Norte. (utilizar /=).
+    3) Listar as ervas com origem na América do Norte ou na Europa
+    4) Listar as ervas com floração que iniciem no mês de Maio.
+    5) Listar as ervas com floração que iniciem no mês de Maio e Junho.
+    6) Listar as ervas com floração inicial diferente do mês de Julho.
+    7) Listar as ervas que são utilizadas para bebidas.
+    8) Listar as ervas que são utilizadas para digestão.
+    9) Listar as histórias das ervas CENTAURIUM ERYTHREAE, CHENOPODIUM BONUS-HENRICUS e COCHLEARIA OFFICINALIS.
+    10) Listar as ervas com altura de 3 metro.
+    11) Listar as ervas com altura menor que 60 cm.
+    12) Listar as ervas com altura maior que 10 cm e menor que 60 cm.
+    13) Listar os outros nomes para GLECHOMA HEDERACEA e para GLYCYRRHIZA GLABRA.
+    14) Liste todas as ervas e seus sinônimos formatando a saída. (Exemplo: ERVA(X, Y), write(X), write(‘ sinônimo =  ‘), write(Y).
+    15) Exibir a diferença de altura entre as ervas GLECHOMA HEDERACEA e a HELIANTHUS ANNUUS.
+altura(erva1,X), altura(erva2, Y), Z is X-Y.
+    16)  Fazer o comando para comparar a altura das Ervas CARUM CARVI e CORIANDRUM SATIVUM
+?- altura(erva1,X), altura(erva2, Y), X=:=Y.
+
+Arquivo 3
+Pesquisas
+    1) Listar as ervas com origem na Ásia Ocidental.
+    2) Listar as ervas com origem diferente da Europa. (utilizar /=).
+    3) Listar as ervas com origem na Ásia Ocidental e na Europa
+    4) Listar as ervas com floração que iniciem no mês de Julho.
+    5) Listar as ervas com floração que iniciem no mês de Julho e as ervas com floração final do mês de Julho.
+    6) Listar as ervas com floração final diferente do mês de Agosto.
+    7) Listar as ervas que são utilizadas para bebidas.
+    8) Listar as ervas que são utilizadas para molhos.
+    9) Listar as histórias das ervas MEUM ATHAMANTICUM, MONARDA DIDYMA e MONTIA PERFOLIATA.
+    10) Listar as ervas com altura de 90 cm.
+    11) Listar as ervas com altura maior que 90 cm.
+    12) Listar as ervas com altura maior ou igual a 10 cm e menor que 60 cm.
+    13) Listar os outros nomes para MELISSA OFFICINALIS e para MENTHA X PIPERITA.
+    14) Liste todas as ervas e seus sinônimos formatando a saída. (Exemplo: ERVA(X, Y), write(X), write(‘ sinônimo =  ‘), write(Y).
+    15) Exibir a diferença de altura entre as ervas MEUM ATHAMANTICUM e a OCIMUM BASILICUM.
+altura(erva1,X), altura(erva2, Y), Z is X-Y.
+    16)  Fazer o comando para comparar a altura das Ervas OENOTHERA BIENNI e ORIGANUM MAJORANA.
+?- altura(erva1,X), altura(erva2, Y), X=:=Y.
+
+Arquivo 4
+Pesquisas
+    1) Listar as ervas com origem no Mediterrâneo.
+    2) Listar as ervas com origem diferente da China. (utilizar /=).
+    3) Listar as ervas com origem na China ou na Ásia.
+    4) Listar as ervas com floração que iniciem no mês de Junho.
+    5) Listar as ervas com floração que iniciem no mês de Junho e Julho, e que tenham floração final do mês de Agosto.
+    6) Listar as ervas com floração final diferente do mês de Setembro.
+    7) Listar as ervas que são utilizadas para tratar asma.
+    8) Listar as ervas que são utilizadas para sopas.
+    9) Listar as histórias das ervas PLANTAGO LANCEOLATA, PORTULACA OLERACEA e RHEUM RHABARBARUM.
+    10) Listar as ervas com altura de 60 cm.
+    11) Listar as ervas com altura maior que 1 m.
+    12) Listar as ervas com altura maior que 10 cm e menor que 60 cm.
+    13) Listar os outros nomes para MELISSA OFFICINALIS e para MENTHA X PIPERITA.
+    14) Liste todas as ervas e seus sinônimos formatando a saída. (Exemplo: ERVA(X, Y), write(X), write(‘ sinônimo =  ‘), write(Y).
+    15) Exibir a diferença de altura entre as ervas SEDUM REFLEXUM e a SISYMBRIUM OFFICINALE.
+altura(erva1,X), altura(erva2, Y), Z is X-Y.
+    16)  Fazer o comando para comparar a altura das Ervas SOLIDAGO VIRGAUREA e SYMPHYTUM OFFICINALE.
+?- altura(erva1,X), altura(erva2, Y), X=:=Y.
+
+
+
